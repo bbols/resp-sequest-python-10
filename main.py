@@ -1,5 +1,6 @@
 import requests
 import re
+import pprint
 TEXT_PARAM='Python developer'
 print("st")
 url="https://api.hh.ru/vacancies"
@@ -70,5 +71,5 @@ with open('file.json','w') as f:
         'count':len(vacancies),
         "requirements":[get_tyrple(new_array[i],new_array_percent[i],new_array_count[i]) for i in range(len(new_array))]
     }
-    print(seg)
+    pprint.pprint(seg)
     json.dump([seg],f)
