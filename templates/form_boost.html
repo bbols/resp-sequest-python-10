@@ -14,35 +14,48 @@
           <h1>Меню</h1>
       </li>
       <li>
-          <a href="contact.html">перейти к контактам</a>
+          <a href="/contact">перейти к контактам</a>
       </li>
       <li>
-          <a href="index.html">перейти на главную страницу</a>
+          <a href="/">перейти на главную страницу</a>
       </li>
       
   </nav>
   <div>
-      <form>
-          <h1>Отправка запрос на hh</h1>
-          <input type="text" placeholder="введите запрос"/>
+      <form action="http://127.0.0.1:5000/form" method="get">
+          <h1>Отправка запрос на hh GET</h1>
+          <input type="text" name="param" id="param" placeholder="введите запрос"/>
+          <input type="submit"/>
+      </form>
+      <form action="http://127.0.0.1:5000/form" method="post">
+          <h1>Отправка запрос на hh POST</h1>
+          <input type="text" name="param_two" id="param_two" placeholder="введите запрос"/>
           <input type="submit"/>
       </form>
       <div>
         <br>
-        <p>request: Python developer</p>
+          <p>Разработчик {{name}}</p>
+           <p>Разработчик {{main_data.b}}</p>
+          <p>Разработчик {{a}}</p>
+        <p >request: <span id="developer">Python developer</span></p>
         <table>
           <tr>
             <th>requirement</th>
             <th>percent</th>
           </tr>
-          <tr>
-            <td>python</td>
-            <td>98.4%</td>
+            {%if hh_data%}
+            {%for hh in hh_data.requirements%}
+                <tr>
+                    <td>{{hh.0.name}}</td>
+                    <td>{{hh.0.persent}}</td>
+                  </tr>
+            {% endfor %}
+            {%else%}
+            <tr>
+            <td>NO DATA</td>
+            <td>NO DATA</td>
           </tr>
-          <tr>
-            <td>Go</td>
-            <td>1.6%</td>
-          </tr>
+            {%endif%}
         </table> 
       </div>
       
